@@ -13,6 +13,7 @@ DtxBool Init()
 	struct DtxWindow *pWindow1 = DtxApp_AddWindow(&gDtxApp, "DtxWindow1");
 	struct DtxWindow *pWindow2 = DtxApp_AddWindow(&gDtxApp, "DtxWindow2");
 	struct DtxWindow *pWindow3 = DtxApp_AddWindow(&gDtxApp, "DtxWindow3");
+	//DtxWindow_AddButtonGadget(pWindow3);
 	DtxApp_Loop(&gDtxApp);
 	return DtxTrue;
 }

@@ -13,5 +13,6 @@ struct DtxWindow
 DtxBool DtxWindow_Construct(struct DtxWindow *this, char* title);
 void DtxWindow_Destruct(struct DtxWindow *this);
 ULONG DtxWindow_GetSignalMask(struct DtxWindow *this);
+//void DtxWindow_AddButtonGadget(struct DtxWindow *this);
 
 #endif

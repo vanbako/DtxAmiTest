@@ -1,18 +1,18 @@
 #include "DtxWindow.h"
 //#include <clib/gadtools_protos.h>
 
-DtxBool DtxWindow_Construct(struct DtxWindow *this, char* title)
+DtxBool DtxWindow_Construct(struct DtxWindow *this, char* title, struct DtxRect dtxRect, struct DtxSize dtxMinSize, struct DtxSize dtxMaxSize)
 {
 	this->mpWindow = OpenWindowTags(
         NULL,
-        WA_Left, 0,
-        WA_Top, 0,
-        WA_Width, 320,
-        WA_Height, 256,
-        WA_MinWidth, 320,
-        WA_MinHeight, 256,
-        WA_MaxWidth, 640,
-        WA_MaxHeight, 512,
+        WA_Left, dtxRect.mLeft,
+        WA_Top, dtxRect.mTop,
+        WA_Width, dtxRect.mWidth,
+        WA_Height, dtxRect.mHeight,
+        WA_MinWidth, dtxMinSize.mWidth,
+        WA_MinHeight, dtxMinSize.mHeight,
+        WA_MaxWidth, dtxMaxSize.mWidth,
+        WA_MaxHeight, dtxMaxSize.mHeight,
         WA_Title, title,
         WA_CloseGadget, TRUE,
         WA_DepthGadget, TRUE,

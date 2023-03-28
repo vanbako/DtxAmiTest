@@ -13,14 +13,36 @@ void DtxApp_Destruct(struct DtxApp *this)
         DtxWindow_Destruct(&this->mDtxWindows[i]);
 }
 
-struct DtxWindow *DtxApp_AddWindow(struct DtxApp *this, char* title)
+struct DtxWindow *DtxApp_AddWindow_Rect_MinMaxSize(struct DtxApp *this, char* title, struct DtxRect dtxRect, struct DtxSize dtxMinSize, struct DtxSize dtxMaxSize)
 {
     if (this->mDtxWindowCount >= 10)
         return NULL;
     struct DtxWindow *pDtxWindow = &(this->mDtxWindows[this->mDtxWindowCount]);
-    if (DtxWindow_Construct(pDtxWindow, title) != DtxTrue)
+    if (DtxWindow_Construct(pDtxWindow, title, dtxRect, dtxMinSize, dtxMaxSize) != DtxTrue)
         return NULL;
     ++(this->mDtxWindowCount);
+    return pDtxWindow;
+}
+
+struct DtxWindow *DtxApp_AddWindow_Rect(struct DtxApp *this, char* title, struct DtxRect dtxRect)
+{
+    struct DtxSize
+        dtxMinSize,
+        dtxMaxSize;
+    DtxSize_Construct(&dtxMinSize, 320, 240);
+    DtxSize_Construct(&dtxMaxSize, 640, 480);
+    struct DtxWindow *pDtxWindow = DtxApp_AddWindow_Rect_MinMaxSize(this, title, dtxRect, dtxMinSize, dtxMaxSize);
+    DtxSize_Destruct(&dtxMinSize);
+    DtxSize_Destruct(&dtxMaxSize);
+    return pDtxWindow;
+}
+
+struct DtxWindow *DtxApp_AddWindow(struct DtxApp *this, char* title)
+{
+    struct DtxRect dtxRect;
+    DtxRect_Construct(&dtxRect, 0, 0, 320, 240);
+    struct DtxWindow *pDtxWindow = DtxApp_AddWindow_Rect(this, title, dtxRect);
+    DtxRect_Destruct(&dtxRect);
     return pDtxWindow;
 }
 

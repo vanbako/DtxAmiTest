@@ -10,9 +10,16 @@ DtxBool Init()
 		return DtxFalse;
 	if (DtxApp_Construct(&gDtxApp) != DtxTrue)
 		return DtxFalse;
-	struct DtxWindow *pWindow1 = DtxApp_AddWindow(&gDtxApp, "DtxWindow1");
-	struct DtxWindow *pWindow2 = DtxApp_AddWindow(&gDtxApp, "DtxWindow2");
-	struct DtxWindow *pWindow3 = DtxApp_AddWindow(&gDtxApp, "DtxWindow3");
+	struct DtxRect dtxRect;
+	DtxRect_Construct(&dtxRect, 20, 20, 400, 300);
+	struct DtxWindow *pWindow1 = DtxApp_AddWindow_Rect(&gDtxApp, "DtxWindow1", dtxRect);
+	dtxRect.mLeft += 10;
+	dtxRect.mTop += 10;
+	struct DtxWindow *pWindow2 = DtxApp_AddWindow_Rect(&gDtxApp, "DtxWindow2", dtxRect);
+	dtxRect.mLeft += 10;
+	dtxRect.mTop += 10;
+	struct DtxWindow *pWindow3 = DtxApp_AddWindow_Rect(&gDtxApp, "DtxWindow3", dtxRect);
+	DtxRect_Destruct(&dtxRect);
 	//DtxWindow_AddButtonGadget(pWindow3);
 	DtxApp_Loop(&gDtxApp);
 	return DtxTrue;

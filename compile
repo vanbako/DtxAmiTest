@@ -1,2 +1,2 @@
-vc -lamiga -lautos DtxLibs.c DtxWindow.c DtxApp.c main.c -o main
+vc -lamiga -lautos DtxSize.c DtxRect.c DtxLibs.c DtxWindow.c DtxApp.c main.c -o main
 echo "Compile done"
